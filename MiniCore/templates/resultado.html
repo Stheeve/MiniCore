@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados de Comisiones</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+        }
+
+        header {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            background: white;
+            padding: 20px;
+            margin: auto;
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input, button {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #007bff;
+            color: white;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f1f1f1;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 12px;
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            background: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Resultados de Comisiones</h1>
+</header>
+
+<main>
+
+    <section>
+
+        <h2>Filtrar por fechas</h2>
+
+        <form method="POST">
+            <label>Inicio:</label>
+            <input type="date" name="fecha_inicio" required>
+
+            <label>Fin:</label>
+            <input type="date" name="fecha_fin" required>
+
+            <button type="submit">Filtrar</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Total Ventas</th>
+                    <th>Comisión</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for d in datos %}
+                <tr>
+                    <td>{{ d.nombre }}</td>
+                    <td>${{ d.total }}</td>
+                    <td>${{ "%.2f"|format(d.comision) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <nav>
+            <a href="/">Volver</a>
+        </nav>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>Sistema de Comisiones - Flask MVC</p>
+</footer>
+
+</body>
+</html>

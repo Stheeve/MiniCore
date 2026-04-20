@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva Venta</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            margin: 0;
+        }
+
+        header {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        section {
+            background: white;
+            padding: 30px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        form label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        nav a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Registrar Venta</h1>
+</header>
+
+<main>
+    <section>
+
+        <form method="POST">
+            <label>Usuario:</label>
+            <select name="idusuario">
+                {% for u in usuarios %}
+                <option value="{{ u.id }}">{{ u.nombre }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Monto:</label>
+            <input type="number" name="monto" step="0.01" required>
+
+            <label>Fecha:</label>
+            <input type="date" name="fecha" required>
+
+            <button type="submit">Guardar</button>
+        </form>
+
+        <nav>
+            <a href="/">Volver</a>
+        </nav>
+
+    </section>
+</main>
+
+<footer>
+    <p>Proyecto Flask MVC</p>
+</footer>
+
+</body>
+</html>
